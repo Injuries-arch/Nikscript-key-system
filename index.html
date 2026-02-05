@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nikscript Key System</title>
+</head>
+
+<body style="background:#0f172a;color:white;text-align:center;padding-top:80px;font-family:Arial">
+
+<h2>Nikscript Key Generator</h2>
+
+<button onclick="getKey()">Generate Key</button>
+
+<br><br>
+<input id="key" readonly>
+
+<script>
+function getKey() {
+  fetch("/api/generate")
+    .then(res => res.text())
+    .then(key => document.getElementById("key").value = key)
+    .catch(err => alert("Error"));
+}
+</script>
+
+</body>
+</html>
